@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Directory</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='229811ae-6342-45e5-98d2-12288815e651.css') }}">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>🏏 Cricket Player Directory</h1>
+
+<form action="/submit" method="POST">
+  <input type="text" name="name" placeholder="Player Name" required />
+  <input type="text" name="nation" placeholder="Nation" required />
+  <input type="text" name="role" placeholder="Role (e.g. Batsman)" required />
+  <input type="text" name="avg" placeholder="Batting Average" required />
+  <input type="text" name="sr" placeholder="Strike Rate" required />
+  <input type="text" name="matches" placeholder="Matches Played" required />
+  <input type="text" name="runs" placeholder="Total Runs" required />
+  <button type="submit">Submit</button>
+</form>
+
+
+    {% if players %}
+    <h2>📋 Player List</h2>
+    <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nation</th>
+      <th>Role</th>
+      <th>Average</th>
+      <th>Strike Rate</th>
+      <th>Matches</th>
+      <th>Runs</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for player in players %}
+    <tr>
+      <td>{{ player[0] }}</td>
+      <td>{{ player[1] }}</td>
+      <td>{{ player[2] }}</td>
+      <td>{{ player[3] }}</td>
+      <td>{{ player[4] }}</td>
+      <td>{{ player[5] }}</td>
+      <td>{{ player[6] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+    {% endif %}
+  </div>
+</body>
+</html>
